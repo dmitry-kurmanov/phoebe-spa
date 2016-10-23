@@ -1,0 +1,39 @@
+@import "global.css";
+
+.root {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 60px;
+    width: 100%;
+}
+
+@media (max-width: $mobile-width) {
+    .root {
+        display: block;
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+.link {
+    color: $color_-_navigation;
+    text-decoration: none;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.link--active {
+    color: $color_-_navigation--active;
+    pointer-events: none;
+    cursor: default;
+}
+
+.delimiter {
+    display: inline-block;
+    height: 24px;
+    width: 1px;
+    background-color: $color_-_navigation-delimiter;
+    vertical-align: middle;
+    margin-right: 30px;
+    margin-left: 30px;
+}

@@ -1,0 +1,11 @@
+[ignore]
+.*node_modules/systemjs-builder.*
+
+[include]
+
+[libs]
+./node_modules/fbjs/flow/include
+./node_modules/fbjs/node_modules/promise
+
+[options]
+

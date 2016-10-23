@@ -1,0 +1,6 @@
+bin/*
+node_modules/*
+.idea/workspace.xml
+.idea/dictionaries/mrcheater.xml
+.nyc_output/*
+coverage/*

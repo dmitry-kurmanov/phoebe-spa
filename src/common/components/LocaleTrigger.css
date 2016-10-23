@@ -1,0 +1,28 @@
+@import "global.css";
+
+.root {
+    display: table-cell;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-right: 50px;
+}
+
+@media (max-width: $mobile-width) {
+    .root {
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+.locale {
+    display: inline-block;
+    color: $color_-_locale;
+    cursor: pointer;
+}
+
+.locale--active {
+    color: $color_-_locale--active;
+    pointer-events: none;
+    cursor: default;
+}
