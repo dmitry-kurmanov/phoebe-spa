@@ -1,19 +1,22 @@
 import { LayoutContainer } from '../containers/LayoutContainer';
-import { PageFeaturesContainer } from '../containers/PageFeaturesContainer';
+import { PageFeatures } from '../components/PageFeatures';
 import { PageLicenseContainer } from '../containers/PageLicenseContainer';
-import { PageDetailsContainer } from '../containers/PageDetailsContainer';
+import { PageDetails } from '../components/PageDetails';
 
-export const features = '/features';
-export const license = 'license';
-export const details = 'details';
+export const to = {
+    features : '/features',
+    license : '/license',
+    details : '/details'
+};
 
 export const Routes = [
-    { pattern: '/',
+    {
+        pattern: '/',
         component: LayoutContainer,
         routes: [
             {
                 pattern: '/features',
-                component: PageFeaturesContainer
+                component: PageFeatures
             },
             {
                 pattern: '/license',
@@ -21,7 +24,7 @@ export const Routes = [
             },
             {
                 pattern: '/details',
-                component: PageDetailsContainer
+                component: PageDetails
             }
         ]
     }

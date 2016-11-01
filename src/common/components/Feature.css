@@ -41,10 +41,10 @@
 }
 
 .details {
-
+    margin-bottom: 20px;
 }
 
 .caption {
-    color: $color_-_details__caption;
-    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10px;
 }

@@ -1,9 +1,7 @@
 import Immutable from 'seamless-immutable';
 import { Action } from '../constants/Action';
 
-export const initialState:{
-    url:string
-} = Immutable({
+export const initialState = Immutable({
     url : ''
 });
 

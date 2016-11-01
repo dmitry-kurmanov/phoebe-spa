@@ -29,6 +29,7 @@ export class PageLicense extends React.PureComponent {
                 </div>
                 {this.props.srcCat ? (
                     <img
+                        onClick = {this.props.fetchRandomCat}
                         className = {styles['img']}
                         src = {this.props.srcCat}
                     />

@@ -58,6 +58,6 @@ export class CompilerServerBase extends CompilerBase {
     }
 
     getExternals() {
-        return [externals()]
+        return [externals()];
     }
 }

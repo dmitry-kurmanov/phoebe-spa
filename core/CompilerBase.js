@@ -32,7 +32,7 @@ export class CompilerBase {
             postcss(webpack) {
                 return [
                     postCssImport({
-                        path: ['./src/common/view'],
+                        path: ['./src/common/components'],
                         addDependencyTo: webpack
                     }),
                     postCssNested(),
@@ -229,7 +229,7 @@ export class CompilerBase {
         if(this.options.watch) {
             const stdin = process.openStdin();
             stdin.addListener("data", (data) => {
-                if(data.toString().trim() == 'rs') {
+                if(data.toString().indexOf('rs') !== -1) {
                     this.restartProcess();
                 }
             });

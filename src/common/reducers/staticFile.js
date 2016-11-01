@@ -1,12 +1,7 @@
 import Immutable from 'seamless-immutable';
 import { Action } from '../constants/Action';
 
-export const initialState:{
-    [name:string]:{
-        file:string,
-        url:string
-    }
-} = Immutable({});
+export const initialState = Immutable({});
 
 export function staticFile(state = initialState, { type, payload }) {
     switch(type) {

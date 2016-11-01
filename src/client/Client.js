@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import cookies from 'cookies-js';
 import Immutable from 'seamless-immutable';
 import { BrowserRouter } from 'react-router';
-import { App } from '../common/containers/App';
+import { App } from '../common/components/App';
 import { store } from '../common/store/index';
 import { LocaleDataActions } from '../common/actions/LocaleDataActions';
 import { api } from '../common/api';

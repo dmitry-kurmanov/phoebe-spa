@@ -5,10 +5,12 @@ import Cookies from 'cookies';
 import catApi from 'cat-api';
 import { ServerRouter, createServerRenderContext } from 'react-router';
 import { store } from '../common/store';
-import { App } from '../common/containers/App';
+import { App } from '../common/components/App';
 import { messages } from './internationalize/messages';
 import { rules } from './internationalize/rules';
 import { api } from '../common/api';
+import { Routes } from '../common/constants/Routes'
+import { matchPatternAndFetchData} from '../../core/matchPatternAndFetchData';
 
 export class Server {
     static main() {
@@ -25,7 +27,7 @@ export class Server {
         for(let locale in messages) {
             app.get(`/locale-data/messages/${locale}.json`, (req, res) => res.json(messages[locale]));
         }
-        app.use('/CatActions-api', catApi('/CatActions-api'));
+        app.use('/cat-api', catApi('/cat-api'));
         app.use(this.handler.bind(this));
     }
 
@@ -122,9 +124,17 @@ export class Server {
 
         const store = this.getStore(extraArguments);
 
-        const resolveFetchData = Promise.resolve();
 
-        const errors = await resolveFetchData(req.url);
-        this.onResolveFetchData(req, res, store, errors);
+
+        const resolveFetchData = () => Promise.resolve([]);
+
+        matchPatternAndFetchData(req.url, Routes);
+
+        try {
+            const errors = await resolveFetchData(req.url);
+            this.onResolveFetchData(req, res, store, errors);
+        } catch(error) {
+            throw error;
+        }
     };
 }

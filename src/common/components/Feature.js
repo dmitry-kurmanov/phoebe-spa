@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
-import { Routes } from '../constants/Routes';
+import { Routes, to } from '../constants/Routes';
 import { Features } from '../constants/Features';
 import styles from './Feature.css';
 
@@ -9,7 +9,10 @@ export const Feature = () => null;
 
 Feature.Card = ({ id }) => (
     <Link
-        to = {`${Routes.details.pattern}/#${Feature.anchors[id]}`}
+        to = {{
+            pathname: to.details,
+            hash: Feature.anchors[id]
+        }}
         className = {styles['card']}
     >
         <div className = {styles['container']}>
@@ -26,7 +29,7 @@ Feature.Card = ({ id }) => (
 );
 
 Feature.Card.propTypes = {
-    id   : React.PropTypes.string.isRequired
+    id : React.PropTypes.string.isRequired
 };
 
 Feature.Details = ({id, children}) => (
@@ -50,21 +53,21 @@ Feature.Details.propTypes = {
 };
 
 Feature.messages = {
-    [Features.ecma]          : `${Feature.name}.ecma`,
-    [Features.reactAndRedux] : `${Feature.name}.reactAndRedux`,
-    [Features.reactRouter]   : `${Feature.name}.reactRouter`,
-    [Features.webpack]       : `${Feature.name}.webpack`,
-    [Features.watch]         : `${Feature.name}.watch`,
-    [Features.restart]       : `${Feature.name}.restart`,
-    [Features.cssModules]    : `${Feature.name}.cssModules`,
-    [Features.manyLoaders]   : `${Feature.name}.manyLoaders`,
-    [Features.intl]          : `${Feature.name}.intl`,
-    [Features.fetchData]     : `${Feature.name}.fetchData`,
-    [Features.test]          : `${Feature.name}.test`,
-    [Features.coverage]      : `${Feature.name}.coverage`,
-    [Features.linter]        : `${Feature.name}.linter`,
-    [Features.flow]          : `${Feature.name}.flow`,
-    [Features.mit]           : `${Feature.name}.mit`,
+    [Features.ecma]          : `Features.ecma`,
+    [Features.reactAndRedux] : `Features.reactAndRedux`,
+    [Features.reactRouter]   : `Features.reactRouter`,
+    [Features.webpack]       : `Features.webpack`,
+    [Features.watch]         : `Features.watch`,
+    [Features.restart]       : `Features.restart`,
+    [Features.cssModules]    : `Features.cssModules`,
+    [Features.manyLoaders]   : `Features.manyLoaders`,
+    [Features.intl]          : `Features.intl`,
+    [Features.fetchData]     : `Features.fetchData`,
+    [Features.test]          : `Features.test`,
+    [Features.coverage]      : `Features.coverage`,
+    [Features.linter]        : `Features.linter`,
+    [Features.flow]          : `Features.flow`,
+    [Features.mit]           : `Features.mit`,
 };
 
 Feature.icons = {

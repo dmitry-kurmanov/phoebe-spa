@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Routes } from '../constants/Routes';
+import { to } from '../constants/Routes';
 import { FormattedMessage } from 'react-intl';
 import styles from './Navigation.css';
 
@@ -9,7 +9,7 @@ export const Navigation = () => (
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {Routes.features.pattern}
+            to = {to.features}
         >
             <FormattedMessage id = {Navigation.messages.features}/>
         </Link>
@@ -17,7 +17,7 @@ export const Navigation = () => (
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {Routes.license.pattern}
+            to = {to.license}
         >
             <FormattedMessage id = {Navigation.messages.license}/>
         </Link>
@@ -25,7 +25,7 @@ export const Navigation = () => (
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {Routes.details.pattern}
+            to = {to.details}
         >
             <FormattedMessage id = {Navigation.messages.details}/>
         </Link>

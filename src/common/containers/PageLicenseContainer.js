@@ -26,6 +26,5 @@ export const PageLicenseContainer = connect(
 )(PageLicense);
 
 PageLicenseContainer.fetchData = (store, props) => {
-    console.log(store, props);
     return Promise.resolve();
 };
