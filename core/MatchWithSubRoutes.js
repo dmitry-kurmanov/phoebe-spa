@@ -1,24 +1,60 @@
 import React from 'react';
-import { Match } from 'react-router';
+import Match from 'react-router/Match';
+import Miss from 'react-router/Miss';
+import Redirect from 'react-router/Redirect';
 
 export const MatchWithSubRoutes = ({routes}) => {
     const children = routes.map(
-        ({pattern, component : Component, routes}, index) => routes ? (
-            <Match
-                key = {index}
-                pattern = {pattern}
-                render = {(...props) => (
-                    <Component {...props}>
-                        <MatchWithSubRoutes routes = {routes}/>
-                    </Component>
-                )}
-            />
+        ({pattern, component : Component, routes, redirectTo}, index) => (routes) ? (
+            (redirectTo) ? (
+                <Match
+                    key = {index}
+                    pattern = {pattern}
+                    render={() => (
+                        <Redirect to = {redirectTo}/>
+                    )}
+                />
+            ) : (
+                <Match
+                    key = {index}
+                    pattern = {pattern}
+                    render = {(...props) => (
+                        <Component {...props}>
+                            <MatchWithSubRoutes routes = {routes}/>
+                        </Component>
+                    )}
+                />
+            )
+        ) : (pattern === '*') ? (
+            (redirectTo) ? (
+                <Miss
+                    key = {index}
+                    render={() => (
+                        <Redirect to = {redirectTo}/>
+                    )}
+                />
+            ) : (
+                <Miss
+                    key = {index}
+                    component = {Component}
+                />
+            )
         ) : (
-            <Match
-                key = {index}
-                pattern = {pattern}
-                component = {Component}
-            />
+            (redirectTo) ? (
+                <Match
+                    key = {index}
+                    pattern = {pattern}
+                    render={() => (
+                        <Redirect to = {redirectTo}/>
+                    )}
+                />
+            ) : (
+                <Match
+                    key = {index}
+                    pattern = {pattern}
+                    component = {Component}
+                />
+            )
         )
     );
     if(children.length === 1) {

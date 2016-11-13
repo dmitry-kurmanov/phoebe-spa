@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import Immutable from 'seamless-immutable';
 import express from 'express';
 import Cookies from 'cookies';
+import url from 'url';
 import catApi from 'cat-api';
 import { ServerRouter, createServerRenderContext } from 'react-router';
 import { store } from '../common/store';
-import { App } from '../common/components/App';
 import { messages } from './internationalize/messages';
 import { rules } from './internationalize/rules';
 import { api } from '../common/api';
-import { Routes } from '../common/constants/Routes'
+import { routes } from '../common/routes';
+import { CoreHistory } from '../../core/CoreHistory';
+import { App } from '../common/components/container/App';
 import { matchPatternAndFetchData} from '../../core/matchPatternAndFetchData';
 
 export class Server {
@@ -37,7 +40,7 @@ export class Server {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>DevExpress - Single Page Application - Starter Kit</title>
+                <title>Phoebe-SPA - Single Page Application - Starter Kit</title>
                 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
                 <link rel="stylesheet" type="text/css" href="/style.css">
                 <link rel="stylesheet" href="/font-awesome-4.6.3/css/font-awesome.min.css">
@@ -70,22 +73,22 @@ export class Server {
             default:
                 locale = 'en';
         }
-        const initialState = {
-            intl : {
+        const state = {
+            intl : Immutable({
                 locale,
                 messages : messages[locale]
-            },
-            localeData : {
+            }),
+            localeData : Immutable({
                 [locale] : {
                     rules : rules[locale],
                     messages : messages[locale]
                 }
-            }
+            })
         };
-        return store(initialState, extraArguments);
+        return store(state, extraArguments);
     };
 
-    onResolveFetchData = (req, res, store, errors:Array<any>) => {
+    onResolveFetchData = (req, res, store, routes, errors:Array<any>) => {
         if(errors.length > 0) {
             console.warn('Fetch data rejects/errors', ...errors);
         }
@@ -95,7 +98,10 @@ export class Server {
                 location = {req.url}
                 context = {context}
             >
-                <App store = {store}/>
+                <App
+                    store = {store}
+                    routes = {routes}
+                />
             </ServerRouter>
         );
 
@@ -123,17 +129,22 @@ export class Server {
         };
 
         const store = this.getStore(extraArguments);
+        const location = url.parse(req.url);
+        store.dispatch(CoreHistory.actions.change(location));
 
 
+        const currentRoutes = routes(store, cookies);
 
         const resolveFetchData = () => Promise.resolve([]);
 
-        matchPatternAndFetchData(req.url, Routes);
+        matchPatternAndFetchData(req.url, currentRoutes);
 
         try {
             const errors = await resolveFetchData(req.url);
-            this.onResolveFetchData(req, res, store, errors);
+            this.onResolveFetchData(req, res, store, currentRoutes, errors);
         } catch(error) {
+            res.status(500);
+            res.end(error.stack);
             throw error;
         }
     };

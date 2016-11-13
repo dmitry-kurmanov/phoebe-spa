@@ -9,7 +9,7 @@ export class CompilerClientBase extends CompilerBase {
     getEntry() {
         return [
             'babel-polyfill',
-            './src/common/components/reset.css',
+            './src/common/components/presentational/reset.css',
             './src/client/index.js'
         ];
     }
@@ -57,4 +57,8 @@ export class CompilerClientBase extends CompilerBase {
     }
 
     startProcess() {}
+
+    getBuildInfoPath() {
+        return 'bin/client-stats.json';
+    }
 }

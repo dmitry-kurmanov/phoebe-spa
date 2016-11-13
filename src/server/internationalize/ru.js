@@ -1,39 +1,38 @@
-import { Feature } from '../../common/components/Feature';
-import { PageLicense } from '../../common/components/PageLicense';
-import { Navigation } from '../../common/components/Navigation';
-import { LocaleTrigger } from '../../common/components/LocaleTrigger';
-import { Features } from '../../common/constants/Features';
+import { PageLicense } from '../../common/components/container/PageLicense';
+import { Navigation } from '../../common/components/presentational/Navigation';
+import { LocaleTrigger } from '../../common/components/presentational/LocaleTrigger';
+import { Messages } from '../../common/constants/Messages';
 
 export const ru = {
-    [Feature.messages[Features.ecma]] :
+    [Messages.FeatureEcma] :
         `ES5, ES6, ES2016, ES.Next и JSX`,
-    [Feature.messages[Features.reactAndRedux]] :
+    [Messages.FeatureReactAndRedux] :
         `React и Redux`,
-    [Feature.messages[Features.reactRouter]] :
+    [Messages.FeatureReactRouter] :
         `React-Router v4 (НОВИНКА)`,
-    [Feature.messages[Features.webpack]] :
+    [Messages.FeatureWebpack] :
         `Webpack для клиента и сервера`,
-    [Feature.messages[Features.watch]] :
+    [Messages.FeatureWatch] :
         `Автоматическое отслеживание изменений в коде и пересборка javascript bundle`,
-    [Feature.messages[Features.restart]] :
+    [Messages.FeatureRestart] :
         `Автоматический перезапуск сервера`,
-    [Feature.messages[Features.cssModules]] :
+    [Messages.FeatureCssModules] :
         `PostCSS и CSS-модули`,
-    [Feature.messages[Features.manyLoaders]] :
+    [Messages.FeatureManyLoaders] :
         `Поддержка JSON, PNG, JPG, GIF и SVG`,
-    [Feature.messages[Features.intl]] :
+    [Messages.FeatureIntl] :
         `Интернационализация / Локализация (React-Intl)`,
-    [Feature.messages[Features.fetchData]] :
+    [Messages.FeatureFetchData] :
         `Загрузка данных на стороне сервера`,
-    [Feature.messages[Features.test]] :
+    [Messages.FeatureTest] :
         `Отладка юнит-тестов (Mocha)`,
-    [Feature.messages[Features.coverage]] :
+    [Messages.FeatureCoverage] :
         `Покрытие тестами (Istanbul)`,
-    [Feature.messages[Features.linter]] :
+    [Messages.FeatureLinter] :
         `Проверка качества кода (ESLint)`,
-    [Feature.messages[Features.flow]] :
+    [Messages.FeatureFlow] :
         `Статический анализ кода (Flow)`,
-    [Feature.messages[Features.mit]] :
+    [Messages.FeatureMit] :
         `Лицензия MIT`,
     [Navigation.messages.features] :
         `Features`,

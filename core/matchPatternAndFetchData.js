@@ -1,17 +1,9 @@
 import matchPattern from 'react-router/matchPattern';
+import { routes } from '../src/common/routes/index';
 
-function getAllRoutesAsArray(routes) {
-    let arr = [];
-    for(let i = routes.length; i--;) {
-        const route = routes[i];
-        arr.push(route);
-        if(route.routes) {
-            arr = [...arr, getAllRoutesAsArray(route.routes)];
-        }
+// matchPattern(pattern, location, matchExactly, parent)
+export function matchPatternAndFetchData(location, routes) {
+    for(let {pattern, exactly, redirectTo, component} of routes.asArray) {
+        //console.log(matchPattern(pattern, location, exactly));
     }
-    return arr;
-}
-
-export function matchPatternAndFetchData(url, routes) {
-    console.log(url, getAllRoutesAsArray(routes));
 }

@@ -32,7 +32,7 @@ export class CompilerBase {
             postcss(webpack) {
                 return [
                     postCssImport({
-                        path: ['./src/common/components'],
+                        path: ['./src/common/components/presentational'],
                         addDependencyTo: webpack
                     }),
                     postCssNested(),
@@ -163,6 +163,10 @@ export class CompilerBase {
                     presets: this.getBabelPresets(),
                     plugins: this.getBabelPlugins()
                 }
+            },
+            {
+                test: /\.html$/,
+                loader: "html"
             }
         ];
     }
@@ -308,3 +312,7 @@ export class CompilerBase {
         throw new Error('CompilerBase is Abstract Class');
     }
 }
+
+process.on('uncaughtException', function(err) {
+    console.log(err)
+});

@@ -1,0 +1,32 @@
+<p>
+A CSS Module is a CSS file in which all class names and animation names are scoped locally by default. All URLs (url(...)) and @imports are in module request format (./xxx and ../xxx means relative, xxx and xxx/yyy means in modules folder, i. e. in node_modules).
+</p>
+<p>
+CSS Modules compile to a low-level interchange format called ICSS or Interoperable CSS, but are written like normal CSS files:
+</p>
+<pre><code>/* style.css */
+.className {
+    color: green;
+}
+</code></pre>
+<p>
+When importing the CSS Module from a JS Module, it exports an object with all mappings from local names to global names.
+</p>
+<pre><code>import styles from "./style.css";
+// import { className } from "./style.css";
+
+const Component = () => (
+    &lt;div className = {styles.className}&gt;
+        example
+    &lt;/div&gt;
+);
+</code></pre>
+<p>
+    More:
+</p>
+<li><a href="https://github.com/css-modules/css-modules">
+    CSS-Modules
+</a></li>
+<li><a href="https://github.com/css-modules/postcss-modules">
+    PostCSS-Modules
+</a></li>

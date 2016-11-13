@@ -1,0 +1,22 @@
+@import "global.css";
+
+.root {
+    margin-bottom: 40px;
+}
+
+.caption {
+    display: block;
+    text-decoration: none;
+    color: $color_-_group__caption;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16pt;
+}
+
+.caption:hover::after {
+    font-family: "FontAwesome";
+    content: "\f064";
+    margin-left: 5px;
+    font-size: 9pt;
+    vertical-align: middle;
+}

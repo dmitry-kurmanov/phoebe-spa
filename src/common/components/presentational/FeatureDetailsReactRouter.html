@@ -1,0 +1,110 @@
+
+    <strong>First Principles</strong>
+    <p>The first principles of React Router are components, <code>location</code>, and <code>Match</code>.</p>
+    <ul>
+        <li>Everything is a component; so, if you know React, you know React Router.</li>
+        <li>A <code>location</code> is data that represents where a visitor is–or wants to
+            go–in your app. It looks just like <code>window.location</code>.</li>
+        <li><code>&lt;Match/&gt;</code> turns a <code>location</code> into UI.</li>
+    </ul>
+    <strong>Example</strong>
+    <pre><code class="language-js"><span>import</span> React <span>from</span> <span>'react'</span>
+<span>import</span> <span>{</span> render <span>}</span> <span>from</span> <span>'react-dom'</span>
+
+<span>// 1. import a few components</span>
+<span>import</span> <span>{</span> BrowserRouter<span>,</span> Match<span>,</span> Miss<span>,</span> Link <span>}</span> <span>from</span> <span>'react-router'</span>
+
+<span>const</span> App <span>=</span> <span>(</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span>// 2. render a `Router`, it will listen to the url changes</span>
+  <span>//    and make the location available to other components</span>
+  <span>//    automatically</span>
+  <span><span><span>&lt;</span>BrowserRouter</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+      <span><span><span>&lt;</span>ul</span><span>&gt;</span></span>
+        <span>{</span><span>/* 3. Link to some paths with `Link` */</span><span>}</span>
+        <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span>=</span><span>"</span>/<span>"</span></span><span>&gt;</span></span>Home<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+        <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span>=</span><span>"</span>/about<span>"</span></span><span>&gt;</span></span>About<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+        <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span>=</span><span>"</span>/topics<span>"</span></span><span>&gt;</span></span>Topics<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+      <span><span><span>&lt;/</span>ul</span><span>&gt;</span></span>
+  
+      <span><span><span>&lt;</span>hr</span><span>/&gt;</span></span>
+  
+      <span>{</span><span>/* 4. Render some `&lt;Match/&gt;` components.
+             When the current location matches the `pattern`
+             then the `component` will render.
+      */</span><span>}</span>
+      <span><span><span>&lt;</span>Match</span> <span class="token attr-name">exactly</span> <span class="token attr-name">pattern</span><span class="token attr-value"><span>=</span><span>"</span>/<span>"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span>=</span><span>{</span>Home<span>}</span></span> <span>/&gt;</span></span>
+      <span><span><span>&lt;</span>Match</span> <span class="token attr-name">pattern</span><span class="token attr-value"><span>=</span><span>"</span>/about<span>"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span>=</span><span>{</span>About<span>}</span></span> <span>/&gt;</span></span>
+      <span><span><span>&lt;</span>Match</span> <span class="token attr-name">pattern</span><span class="token attr-value"><span>=</span><span>"</span>/topics<span>"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span>=</span><span>{</span>Topics<span>}</span></span> <span>/&gt;</span></span>
+  
+      <span>{</span><span>/* If none of those match, then a sibling `Miss` will render. */</span><span>}</span>
+      <span><span><span>&lt;</span>Miss</span> <span class="token attr-name">component</span><span class="token script language-javascript"><span>=</span><span>{</span>NoMatch<span>}</span></span><span>/&gt;</span></span>
+    <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+  <span><span><span>&lt;/</span>BrowserRouter</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>const</span> Home <span>=</span> <span>(</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>h2</span><span>&gt;</span></span>Home<span><span><span>&lt;/</span>h2</span><span>&gt;</span></span>
+  <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>const</span> About <span>=</span> <span>(</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>h2</span><span>&gt;</span></span>About<span><span><span>&lt;/</span>h2</span><span>&gt;</span></span>
+  <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>const</span> NoMatch <span>=</span> <span>(</span><span>{</span> location <span>}</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>h2</span><span>&gt;</span></span>Whoops<span><span><span>&lt;/</span>h2</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>p</span><span>&gt;</span></span>Sorry but <span>{</span>location<span>.</span>pathname<span>}</span> didn’t match any pages<span><span><span>&lt;/</span>p</span><span>&gt;</span></span>
+  <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>const</span> Topics <span>=</span> <span>(</span><span>{</span> pathname<span>,</span> pattern <span>}</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span>// 5. Components rendered by a `Match` get some routing-specific</span>
+  <span>//    props, like the portion of the parent `pattern` that was</span>
+  <span>//    matched against the current `location.pathname`, in this case</span>
+  <span>//    `/topics`</span>
+  <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>h2</span><span>&gt;</span></span>Topics<span><span><span>&lt;/</span>h2</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>ul</span><span>&gt;</span></span>
+      <span>{</span><span>/* 6. Use the parent's matched pathname to link relatively */</span><span>}</span>
+      <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token script language-javascript"><span>=</span><span>{</span><span class="token template-string"><span>`</span><span><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span>/rendering`</span></span><span>}</span></span><span>&gt;</span></span>Rendering <span>with</span> React<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+      <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token script language-javascript"><span>=</span><span>{</span><span class="token template-string"><span>`</span><span><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span>/components`</span></span><span>}</span></span><span>&gt;</span></span>Components<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+      <span><span><span>&lt;</span>li</span><span>&gt;</span></span><span><span><span>&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token script language-javascript"><span>=</span><span>{</span><span class="token template-string"><span>`</span><span><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span>/props-v-state`</span></span><span>}</span></span><span>&gt;</span></span>Props v<span>.</span> State<span><span><span>&lt;/</span>Link</span><span>&gt;</span></span><span><span><span>&lt;/</span>li</span><span>&gt;</span></span>
+    <span><span><span>&lt;/</span>ul</span><span>&gt;</span></span>
+
+    <span>{</span><span>/* 7. Render more `Match` components to get nesting naturally
+           within the render lifecycle. Use the parent's matched
+           pathname to nest the url.
+    */</span><span>}</span>
+    <span><span><span>&lt;</span>Match</span> <span class="token attr-name">pattern</span><span class="token script language-javascript"><span>=</span><span>{</span><span class="token template-string"><span>`</span><span><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span>/:topicId`</span></span><span>}</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span>=</span><span>{</span>Topic<span>}</span></span><span>/&gt;</span></span>
+
+    <span>{</span><span>/* 8. use the `render` prop for convenient inline rendering */</span><span>}</span>
+    <span><span><span>&lt;</span>Match</span> <span class="token attr-name">pattern</span><span class="token script language-javascript"><span>=</span><span>{</span>pathname<span>}</span></span> <span class="token attr-name">exactly</span> <span class="token attr-name">render</span><span class="token script language-javascript"><span>=</span><span>{</span><span>(</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+      <span><span><span>&lt;</span>h3</span><span>&gt;</span></span>Please select a topic<span><span><span>&lt;/</span>h3</span><span>&gt;</span></span>
+    <span>)</span><span>}</span></span><span>/&gt;</span></span>
+  <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>const</span> Topic <span>=</span> <span>(</span><span>{</span> params <span>}</span><span>)</span> <span>=</span><span>&gt;</span> <span>(</span>
+  <span>// 9. the dynamic segments of a `pattern` (in this case `:topicId`)</span>
+  <span>//    are parsed and sent to the component from `Match`.</span>
+  <span><span><span>&lt;</span>div</span><span>&gt;</span></span>
+    <span><span><span>&lt;</span>h3</span><span>&gt;</span></span><span>{</span>params<span>.</span>topicId<span>}</span><span><span><span>&lt;/</span>h3</span><span>&gt;</span></span>
+  <span><span><span>&lt;/</span>div</span><span>&gt;</span></span>
+<span>)</span>
+
+<span>render</span><span>(</span><span><span><span>&lt;</span>App</span><span>/&gt;</span></span><span>,</span> document<span>.</span><span>querySelector</span><span>(</span><span>'#root'</span><span>)</span><span>)</span>
+</code></pre>
+<p>
+    More:
+</p>
+    <li><a href="https://github.com/ReactTraining/react-router/tree/v4">
+        Github. React Router v4
+    </a></li>
+    <li><a href="https://react-router.now.sh/quick-start">
+        Documentation. React Router v4
+    </a></li>

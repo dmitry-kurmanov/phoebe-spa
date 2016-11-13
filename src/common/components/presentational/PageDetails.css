@@ -1,0 +1,46 @@
+@import "global.css";
+
+.root {
+    padding: 10px 20px;
+    p {
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style: disc inside;
+    }
+    li {
+        display: list-item;
+        margin-bottom: 10px;
+    }
+    strong {
+        font-weight: bold;
+        font-style: italic;
+    }
+    table {
+        margin-bottom: 10px;
+    }
+    th {
+        font-weight: bold;
+        font-style: italic;
+    }
+    td, th {
+        padding: 6px 13px;
+        border: 1px solid $border-color_-_menu;
+    }
+    code {
+        display: inline-block;
+        margin: 0 5px;
+        font-family: "Courier New";
+    }
+    pre {
+        display: block;
+        max-height: 400px;
+        overflow: auto;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: $background-color_-_menu__top-bar;
+        color: $color_-_font--inverted;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+}

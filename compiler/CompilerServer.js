@@ -1,10 +1,6 @@
 import { CompilerServerBase } from '../core/CompilerServerBase';
 
 export class CompilerServer extends CompilerServerBase {
-    getBuildInfoPath() {
-        return 'bin/server-stats.json';
-    }
-
     getWebpackDefinePlugin() {
         return {
             ...super.getWebpackDefinePlugin(),

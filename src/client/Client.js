@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cookies from 'cookies-js';
 import Immutable from 'seamless-immutable';
-import { BrowserRouter } from 'react-router';
-import { App } from '../common/components/App';
+import BrowserRouter from 'react-router/BrowserRouter';
+import { App } from '../common/components/container/App';
 import { store } from '../common/store/index';
 import { LocaleDataActions } from '../common/actions/LocaleDataActions';
 import { api } from '../common/api';
+import { routes } from '../common/routes';
 
 export class Client {
     static main() {
@@ -32,7 +33,10 @@ export class Client {
         store.dispatch(LocaleDataActions.updateComplete(locale, rules, messages, true));
         ReactDOM.render((
             <BrowserRouter>
-                <App store = {store}/>
+                <App
+                    store = {store}
+                    routes = {routes(store, cookies)}
+                />
             </BrowserRouter>
         ), node);
     }

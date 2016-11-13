@@ -1,39 +1,38 @@
-import { Feature } from '../../common/components/Feature';
-import { PageLicense } from '../../common/components/PageLicense';
-import { Navigation } from '../../common/components/Navigation';
-import { LocaleTrigger } from '../../common/components/LocaleTrigger';
-import { Features } from '../../common/constants/Features';
+import { PageLicense } from '../../common/components/container/PageLicense';
+import { Navigation } from '../../common/components/presentational/Navigation';
+import { LocaleTrigger } from '../../common/components/presentational/LocaleTrigger';
+import { Messages } from '../../common/constants/Messages';
 
 export const en = {
-    [Feature.messages[Features.ecma]] :
+    [Messages.FeatureEcma] :
         `ES5, ES6, ES2016, ES.Next and JSX`,
-    [Feature.messages[Features.reactAndRedux]] :
+    [Messages.FeatureReactAndRedux] :
         `React and Redux`,
-    [Feature.messages[Features.reactRouter]] :
+    [Messages.FeatureReactRouter] :
         `React-Router v4 (NEW)`,
-    [Feature.messages[Features.webpack]] :
+    [Messages.FeatureWebpack] :
         `Webpack for front-end and back-end`,
-    [Feature.messages[Features.watch]] :
+    [Messages.FeatureWatch] :
         `Automatically watches the sources for changes to recompile the javascript bundle`,
-    [Feature.messages[Features.restart]] :
+    [Messages.FeatureRestart] :
         `Automatically restart the server`,
-    [Feature.messages[Features.cssModules]] :
+    [Messages.FeatureCssModules] :
         `PostCSS and CSS-modules`,
-    [Feature.messages[Features.manyLoaders]] :
+    [Messages.FeatureManyLoaders] :
         `Support JSON, PNG, JPG, GIF and SVG`,
-    [Feature.messages[Features.intl]] :
+    [Messages.FeatureIntl] :
         `Internationalization / Localization (React-Intl)`,
-    [Feature.messages[Features.fetchData]] :
+    [Messages.FeatureFetchData] :
         `Server-side fetch data`,
-    [Feature.messages[Features.test]] :
+    [Messages.FeatureTest] :
         `Debugging Unit Tests (Mocha)`,
-    [Feature.messages[Features.coverage]] :
+    [Messages.FeatureCoverage] :
         `Coverage (Istanbul)`,
-    [Feature.messages[Features.linter]] :
+    [Messages.FeatureLinter] :
         `JavaScript Linter (ESLint)`,
-    [Feature.messages[Features.flow]] :
+    [Messages.FeatureFlow] :
         `Static type checker for JavaScript (Flow)`,
-    [Feature.messages[Features.mit]] :
+    [Messages.FeatureMit] :
         `MIT License`,
     [Navigation.messages.features] :
         `Features`,

@@ -60,4 +60,8 @@ export class CompilerServerBase extends CompilerBase {
     getExternals() {
         return [externals()];
     }
+
+    getBuildInfoPath() {
+        return 'bin/server-stats.json';
+    }
 }
