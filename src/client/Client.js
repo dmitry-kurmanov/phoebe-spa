@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import cookies from 'cookies-js';
 import Immutable from 'seamless-immutable';
 import BrowserRouter from 'react-router/BrowserRouter';
-import { App } from '../common/components/container/App';
-import { store } from '../common/store/index';
-import { LocaleDataActions } from '../common/actions/LocaleDataActions';
-import { api } from '../common/api';
 import { routes } from '../common/routes';
-
+import { App } from '../common/components/container/App';
+import { store } from '../common/store';
+import { api } from '../common/api';
+import { LocaleDataActions } from '../common/actions/LocaleDataActions';
+console.log(33);
 export class Client {
     static main() {
         const node = document.getElementById('app');

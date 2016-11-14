@@ -1,8 +1,11 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Group } from '../container/Group';
+import { Messages } from '../../constants/Messages';
+import Helmet from 'react-helmet';
 import styles from './PageLicenseView.css';
 
+@injectIntl
 export class PageLicenseView extends React.PureComponent {
     componentDidMount() {
         if(!this.props.license) {
@@ -16,10 +19,11 @@ export class PageLicenseView extends React.PureComponent {
     render() {
         return (
             <div className = {styles['root']}>
+                <Helmet title = {this.props.intl.formatMessage({id:Messages.PageLicense})}/>
                 <Group
                     id = 'mit'
                     caption = {
-                        <FormattedMessage id = {PageLicenseView.messages.captionMit}/>
+                        <FormattedMessage id = {Messages.PageLicenseCaptionMit}/>
                     }
                 >
                     {this.props.license ? (
@@ -33,7 +37,7 @@ export class PageLicenseView extends React.PureComponent {
                 <Group
                     id = 'cat'
                     caption = {
-                        <FormattedMessage id = {PageLicenseView.messages.captionCat}/>
+                        <FormattedMessage id = {Messages.PageLicenseCaptionCat}/>
                     }
                 >
                     {this.props.srcCat ? (
@@ -54,9 +58,4 @@ PageLicenseView.propTypes = {
     srcCat              : React.PropTypes.string,
     fetchFileMitLicence : React.PropTypes.func.isRequired,
     fetchRandomCat      : React.PropTypes.func.isRequired
-};
-
-PageLicenseView.messages = {
-    captionMit : `${PageLicenseView.name}.captionMit`,
-    captionCat : `${PageLicenseView.name}.captionCat`,
 };

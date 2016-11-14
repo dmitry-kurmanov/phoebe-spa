@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Immutable from 'seamless-immutable';
 import express from 'express';
+import Helmet from 'react-helmet';
 import Cookies from 'cookies';
 import url from 'url';
 import catApi from 'cat-api';
@@ -35,12 +36,13 @@ export class Server {
     }
 
     getHTML(markup:string, state:{[name:string]:any}) {
+        const head = Helmet.rewind();
         return html`
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>Phoebe-SPA - Single Page Application - Starter Kit</title>
+                ${head.title.toString()}
                 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
                 <link rel="stylesheet" type="text/css" href="/style.css">
                 <link rel="stylesheet" href="/font-awesome-4.6.3/css/font-awesome.min.css">

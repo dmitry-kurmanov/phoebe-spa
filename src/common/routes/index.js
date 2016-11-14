@@ -48,3 +48,7 @@ export function routes(store, cookies) {
     //if(/*...*/) return anonymousRoutes else
     return userRoutes;
 }
+
+routes.features = '/features';
+routes.license = '/license';
+routes.details = '/details';

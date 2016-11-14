@@ -1,6 +1,3 @@
-import { PageLicense } from '../../common/components/container/PageLicense';
-import { Navigation } from '../../common/components/presentational/Navigation';
-import { LocaleTrigger } from '../../common/components/presentational/LocaleTrigger';
 import { Messages } from '../../common/constants/Messages';
 
 export const ru = {
@@ -34,18 +31,18 @@ export const ru = {
         `Статический анализ кода (Flow)`,
     [Messages.FeatureMit] :
         `Лицензия MIT`,
-    [Navigation.messages.features] :
+    [Messages.PageFeatures] :
         `Features`,
-    [Navigation.messages.license] :
+    [Messages.PageLicense] :
         `License`,
-    [Navigation.messages.details] :
+    [Messages.PageDetails] :
         `Details`,
-    [PageLicense.messages.captionMit] :
+    [Messages.PageLicenseCaptionMit] :
         `Лицензия MIT`,
-    [PageLicense.messages.captionCat] :
+    [Messages.PageLicenseCaptionCat] :
         `Динамически загруженный кот`,
-    [LocaleTrigger.messages.en] :
+    [Messages.LocaleTriggerEn] :
         `EN`,
-    [LocaleTrigger.messages.ru] :
+    [Messages.LocaleTriggerRu] :
         `RU`
 };

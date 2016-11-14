@@ -1,6 +1,3 @@
-import { PageLicense } from '../../common/components/container/PageLicense';
-import { Navigation } from '../../common/components/presentational/Navigation';
-import { LocaleTrigger } from '../../common/components/presentational/LocaleTrigger';
 import { Messages } from '../../common/constants/Messages';
 
 export const en = {
@@ -34,18 +31,18 @@ export const en = {
         `Static type checker for JavaScript (Flow)`,
     [Messages.FeatureMit] :
         `MIT License`,
-    [Navigation.messages.features] :
+    [Messages.PageFeatures] :
         `Features`,
-    [Navigation.messages.license] :
+    [Messages.PageLicense] :
         `License`,
-    [Navigation.messages.details] :
+    [Messages.PageDetails] :
         `Details`,
-    [PageLicense.messages.captionMit] :
+    [Messages.PageLicenseCaptionMit] :
         `MIT License`,
-    [PageLicense.messages.captionCat] :
+    [Messages.PageLicenseCaptionCat] :
         `Fetch Data Cat`,
-    [LocaleTrigger.messages.en] :
+    [Messages.LocaleTriggerEn] :
         `EN`,
-    [LocaleTrigger.messages.ru] :
+    [Messages.LocaleTriggerRu] :
         `RU`
 };

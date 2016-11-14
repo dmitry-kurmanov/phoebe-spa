@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'react-router/Link';
-import { NamedLinks } from '../../routes/NamedLinks';
+import { Messages } from '../../constants/Messages';
+import { routes } from '../../routes';
 import { FormattedMessage } from 'react-intl';
 import styles from './Navigation.css';
 
@@ -9,31 +10,25 @@ export const Navigation = () => (
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {NamedLinks.features}
+            to = {routes.features}
         >
-            <FormattedMessage id = {Navigation.messages.features}/>
+            <FormattedMessage id = {Messages.PageFeatures}/>
         </Link>
         <div className = {styles['delimiter']}/>
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {NamedLinks.license}
+            to = {routes.license}
         >
-            <FormattedMessage id = {Navigation.messages.license}/>
+            <FormattedMessage id = {Messages.PageLicense}/>
         </Link>
         <div className = {styles['delimiter']}/>
         <Link
             className = {styles['link']}
             activeClassName = {styles['link--active']}
-            to = {NamedLinks.details}
+            to = {routes.details}
         >
-            <FormattedMessage id = {Navigation.messages.details}/>
+            <FormattedMessage id = {Messages.PageDetails}/>
         </Link>
     </div>
 );
-
-Navigation.messages = {
-    features : `${Navigation.name}.features`,
-    license  : `${Navigation.name}.license`,
-    details  : `${Navigation.name}.details`,
-};

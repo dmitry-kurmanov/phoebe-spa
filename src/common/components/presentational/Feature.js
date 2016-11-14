@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'react-router/Link';
-import { NamedLinks } from '../../routes/NamedLinks';
+import { routes } from '../../routes';
 import styles from './Feature.css';
 
 export const Feature = ({ id, icon, children }) => (
     <Link
         to = {{
-            pathname: NamedLinks.details,
+            pathname: routes.details,
             hash: id
         }}
         className = {styles['card']}
