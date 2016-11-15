@@ -8,7 +8,7 @@ import { App } from '../common/components/container/App';
 import { store } from '../common/store';
 import { api } from '../common/api';
 import { LocaleDataActions } from '../common/actions/LocaleDataActions';
-console.log(33);
+
 export class Client {
     static main() {
         const node = document.getElementById('app');
